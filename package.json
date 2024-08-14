@@ -1,6 +1,10 @@
 {
-  "name": "myapp",
+  "name": "next_fe",
   "version": "0.1.0",
+  "author": {
+    "name": "Tiien Dat",
+    "url": "tan nhut"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,16 +13,19 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.5"
+    "@ant-design/nextjs-registry": "1.0.0",
+    "antd": "5.19.3",
+    "next": "14.2.5",
+    "query-string": "9.1.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "@types/node": "20.14.12",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.5",
+    "typescript": "5.5.4"
   }
 }
