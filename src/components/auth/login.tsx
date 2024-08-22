@@ -2,11 +2,22 @@
 import { Button, Col, Divider, Form, Input, Row } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import Link from 'next/link';
+import { authenticate } from '@/utils/actions';
+
 
 const Login = () => {
 
     const onFinish = async (values: any) => {
-
+        const { username, password } = values
+        const res = await authenticate(username,password)
+        console.log("check response : ",res)
+        //trigger sign-in
+        // try {
+        //     const data = await signIn("credentials",{ email, password, redirect: false })
+        //     console.log(">>>check value:",data)
+        // } catch (error) {
+        //     console.log("check error : ",error)
+        // }
     };
 
     return (
@@ -27,7 +38,7 @@ const Login = () => {
                     >
                         <Form.Item
                             label="Email"
-                            name="email"
+                            name="username"
                             rules={[
                                 {
                                     required: true,
@@ -50,8 +61,6 @@ const Login = () => {
                         >
                             <Input.Password />
                         </Form.Item>
-
-
 
                         <Form.Item
                         >
