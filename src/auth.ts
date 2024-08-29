@@ -16,7 +16,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       authorize: async (credentials) => {
           const res = await sendRequest<IBackendRes<Ilogin>>({
             method : "POST",
-            url :"http://localhost:8080/api/v1/auth/login",
+            url :`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/v1/auth/login`,
             body:{
               username :credentials.username,
               password: credentials.password
@@ -47,7 +47,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     jwt({ token, user }) {
       if (user) { // User is available during sign-in
-        token.user = (user as IUser)
+        token.user = (user as IUser);
       }
       return token
     },
@@ -55,7 +55,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       (session.user as IUser) = token.user;
       return session
     },
+    authorized: async ({ auth }) => {
+      // Logged in users are authenticated, 
+      //otherwise redirect to login page
+      return !!auth
+    },
   },
+
   pages: {
     signIn: "/auth/login",
   },
